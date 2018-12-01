@@ -40,9 +40,9 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
+import io.goshisoft.marketcap.MarketCapActivity;
 
 import static com.wallet.crypto.trustapp.C.ETHEREUM_NETWORK_NAME;
-import static com.wallet.crypto.trustapp.C.ETH_SYMBOL;
 
 public class TransactionsActivity extends BaseNavigationActivity implements View.OnClickListener {
 
@@ -109,7 +109,7 @@ public class TransactionsActivity extends BaseNavigationActivity implements View
     @Override
     protected void onPause() {
         super.onPause();
-
+        viewModel.pause();
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
@@ -131,10 +131,12 @@ public class TransactionsActivity extends BaseNavigationActivity implements View
         switch (item.getItemId()) {
             case R.id.action_settings: {
                 viewModel.showSettings(this);
-            } break;
+            }
+            break;
             case R.id.action_deposit: {
                 openExchangeDialog();
-            } break;
+            }
+            break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -144,7 +146,8 @@ public class TransactionsActivity extends BaseNavigationActivity implements View
         switch (view.getId()) {
             case R.id.try_again: {
                 viewModel.fetchTransactions();
-            } break;
+            }
+            break;
             case R.id.action_buy: {
                 openExchangeDialog();
             }
@@ -164,6 +167,10 @@ public class TransactionsActivity extends BaseNavigationActivity implements View
             }
             case R.id.action_send: {
                 viewModel.showSend(this);
+                return true;
+            }
+            case R.id.action_log: {
+                startActivity(MarketCapActivity.getIntent(this, false));
                 return true;
             }
         }

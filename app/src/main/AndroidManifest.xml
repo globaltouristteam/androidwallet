@@ -62,8 +62,7 @@
 
         <activity
             android:name=".ui.AddTokenActivity"
-            android:label="@string/title_add_token"
-            />
+            android:label="@string/title_add_token" />
 
         <activity
             android:name=".ui.barcode.BarcodeCaptureActivity"
@@ -72,6 +71,8 @@
         <activity
             android:name=".ui.GasSettingsActivity"
             android:label="@string/title_send_settings" />
+
+        <activity android:name="io.goshisoft.marketcap.MarketCapActivity" />
     </application>
 
 </manifest>

@@ -105,21 +105,31 @@ public class TransactionsViewModel extends BaseViewModel {
                 .subscribe(this::onDefaultNetwork, this::onError);
     }
 
+    public void pause() {
+        if (transactionDisposable != null && !transactionDisposable.isDisposed()) {
+            transactionDisposable.dispose();
+        }
+        if (balanceDisposable != null && !balanceDisposable.isDisposed()) {
+            balanceDisposable.dispose();
+        }
+    }
+
     public void fetchTransactions() {
         progress.postValue(true);
         transactionDisposable = Observable.interval(0, FETCH_TRANSACTIONS_INTERVAL, TimeUnit.SECONDS)
-            .doOnNext(l ->
-                disposable = fetchTransactionsInteract
-                        .fetch(defaultWallet.getValue()/*new Wallet("0x60f7a1cbc59470b74b1df20b133700ec381f15d3")*/)
-                        .subscribe(this::onTransactions, this::onError))
-            .subscribe();
+                .doOnNext(l ->
+                        disposable = fetchTransactionsInteract
+                                .fetch(defaultWallet.getValue()/*new Wallet("0x60f7a1cbc59470b74b1df20b133700ec381f15d3")*/)
+                                .subscribe(this::onTransactions, this::onError))
+                .subscribe();
     }
 
-    public void getBalance() {
+    private void getBalance() {
         balanceDisposable = Observable.interval(0, GET_BALANCE_INTERVAL, TimeUnit.SECONDS)
                 .doOnNext(l -> getDefaultWalletBalance
                         .get(defaultWallet.getValue())
-                        .subscribe(defaultWalletBalance::postValue, t -> {}))
+                        .subscribe(defaultWalletBalance::postValue, t -> {
+                        }))
                 .subscribe();
     }
 
@@ -149,7 +159,9 @@ public class TransactionsViewModel extends BaseViewModel {
         settingsRouter.open(context);
     }
 
-    public void showSend(Context context) { sendRouter.open(context); }
+    public void showSend(Context context) {
+        sendRouter.open(context);
+    }
 
     public void showDetails(Context context, Transaction transaction) {
         transactionDetailRouter.open(context, transaction);

@@ -16,77 +16,79 @@ import com.wallet.crypto.trustapp.R;
 
 
 public class AddWalletView extends FrameLayout implements View.OnClickListener {
-	private OnNewWalletClickListener onNewWalletClickListener;
-	private OnImportWalletClickListener onImportWalletClickListener;
+    private OnNewWalletClickListener onNewWalletClickListener;
+    private OnImportWalletClickListener onImportWalletClickListener;
 
-	public AddWalletView(Context context) {
-		this(context, R.layout.layout_dialog_add_account);
-	}
+    public AddWalletView(Context context) {
+        this(context, R.layout.layout_dialog_add_account);
+    }
 
-	public AddWalletView(Context context, @LayoutRes int layoutId) {
-		super(context);
+    public AddWalletView(Context context, @LayoutRes int layoutId) {
+        super(context);
 
-		init(layoutId);
-	}
+        init(layoutId);
+    }
 
-	private void init(@LayoutRes int layoutId) {
-		LayoutInflater.from(getContext()).inflate(layoutId, this, true);
-		findViewById(R.id.new_account_action).setOnClickListener(this);
-		findViewById(R.id.import_account_action).setOnClickListener(this);
+    private void init(@LayoutRes int layoutId) {
+        LayoutInflater.from(getContext()).inflate(layoutId, this, true);
+        findViewById(R.id.new_account_action).setOnClickListener(this);
+        findViewById(R.id.import_account_action).setOnClickListener(this);
 
         ViewPager viewPager = findViewById(R.id.intro);
         if (viewPager != null) {
             viewPager.setPageTransformer(false, new DepthPageTransformer());
             viewPager.setAdapter(new IntroPagerAdapter());
         }
-	}
+    }
 
-	@Override
-	public void onClick(View view) {
-		switch (view.getId()) {
-			case R.id.new_account_action: {
-				if (onNewWalletClickListener != null) {
-					onNewWalletClickListener.onNewWallet(view);
-				}
-			} break;
-			case R.id.import_account_action: {
-				if (onImportWalletClickListener != null) {
-					onImportWalletClickListener.onImportWallet(view);
-				}
-			} break;
-		}
-	}
-	
-	public void setOnNewWalletClickListener(OnNewWalletClickListener onNewWalletClickListener) {
-		this.onNewWalletClickListener = onNewWalletClickListener;
-	}
-	
-	public void setOnImportWalletClickListener(OnImportWalletClickListener onImportWalletClickListener) {
-		this.onImportWalletClickListener = onImportWalletClickListener;
-	}
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.new_account_action: {
+                if (onNewWalletClickListener != null) {
+                    onNewWalletClickListener.onNewWallet(view);
+                }
+            }
+            break;
+            case R.id.import_account_action: {
+                if (onImportWalletClickListener != null) {
+                    onImportWalletClickListener.onImportWallet(view);
+                }
+            }
+            break;
+        }
+    }
 
-	public interface OnNewWalletClickListener {
-		void onNewWallet(View view);
-	}
+    public void setOnNewWalletClickListener(OnNewWalletClickListener onNewWalletClickListener) {
+        this.onNewWalletClickListener = onNewWalletClickListener;
+    }
 
-	public interface OnImportWalletClickListener {
-		void onImportWallet(View view);
-	}
+    public void setOnImportWalletClickListener(OnImportWalletClickListener onImportWalletClickListener) {
+        this.onImportWalletClickListener = onImportWalletClickListener;
+    }
 
-	private static class IntroPagerAdapter extends PagerAdapter {
-        private int[] titles = new int[] {
+    public interface OnNewWalletClickListener {
+        void onNewWallet(View view);
+    }
+
+    public interface OnImportWalletClickListener {
+        void onImportWallet(View view);
+    }
+
+    private static class IntroPagerAdapter extends PagerAdapter {
+        private int[] titles = new int[]{
                 R.string.intro_title_first_page,
                 R.string.welcome_erc20_label_title,
                 R.string.intro_title_second_page,
                 R.string.intro_title_third_page,
         };
-        private int[] messages = new int[] {
+        private int[] messages = new int[]{
                 R.string.intro_message_first_page,
                 R.string.welcome_erc20_label_description,
                 R.string.intro_message_second_page,
                 R.string.intro_message_third_page,
         };
-        private int[] images = new int[] {
+        private int[] images = new int[]{
                 R.mipmap.onboarding_lock,
                 R.drawable.onboarding_erc20,
                 R.mipmap.onboarding_open_source,
@@ -124,7 +126,7 @@ public class AddWalletView extends FrameLayout implements View.OnClickListener {
     private static class DepthPageTransformer implements ViewPager.PageTransformer {
         private static final float MIN_SCALE = 0.75f;
 
-        public void transformPage(View view, float position) {
+        public void transformPage(@NonNull View view, float position) {
             int pageWidth = view.getWidth();
 
             if (position < -1) { // [-Infinity,-1)

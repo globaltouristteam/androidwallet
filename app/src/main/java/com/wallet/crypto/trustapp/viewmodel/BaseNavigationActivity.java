@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import com.wallet.crypto.trustapp.R;
 import com.wallet.crypto.trustapp.ui.BaseActivity;
 
-public class BaseNavigationActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public abstract class BaseNavigationActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView navigation;
 

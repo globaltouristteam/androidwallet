@@ -32,7 +32,7 @@
     <string name="title_account_list">Wallets</string>
     <string name="title_account_detail">Wallet Detail</string>
     <string name="account_delete">delete</string>
-    <string name="cancel">cancel</string>
+    <string name="cancel">Cancel</string>
     <string name="confirm_delete_account">Make sure that you have a backup of this wallet.</string>
     <string name="title_activity_import_account">ImportAccountActivity</string>
     <string name="action_import">Import</string>
@@ -53,7 +53,7 @@
     <string name="title_trust">Trust</string>
     <string name="low_storage_error">low storage error</string>
     <string name="no_camera_permission">camera permission not given</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="no_barcode_captured">no barcode captured</string>
     <string name="scan_barcode_button">Scan</string>
     <string name="barcode_error_format">Invalid barcode format: %s</string>
@@ -106,7 +106,7 @@
     <string name="lock_exit">Exit</string>
     <string name="unlock_screen_title_android">Unlock screen</string>
     <string name="unlock_screen_prompt_android">Please unlock your Android device to continue.</string>
-    <string name="sending_progress">Sending...</string>
+    <string name="sending_progress">Sending…</string>
 
     <string name="backup_new_password_text">Think of a password that will be installed on the backup.\nThe password will be available for this wallet.</string>
     <string name="do_manage_make_backup">Did you manage to make a backup?</string>
@@ -219,7 +219,7 @@
     <string name="unknown_balance_without_symbol">--</string>
     <string name="dummy">dummy_value</string>
     <string name="dummy_transaction_value">-- ETH</string>
-    <string name="title_dialog_sending">Sending...</string>
+    <string name="title_dialog_sending">Sending…</string>
     <string name="welcome.erc20.label.title">ERC20 Compatible</string>
     <string name="welcome.erc20.label.description">Support for ERC20 tokens by default.</string>
     <string name="i_understand">I understand</string>
@@ -230,4 +230,9 @@
     <string name="title_activity_barcode">Barcode Scan</string>
     <string name="error_add_token">Could not add token.</string>
     <string name="facebook">Facebook</string>
+    <string name="market_cap">Market Cap</string>
+    <string name="id">#</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="hour">24h</string>
 </resources>
