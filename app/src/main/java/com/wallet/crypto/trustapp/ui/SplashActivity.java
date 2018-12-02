@@ -1,6 +1,7 @@
 package com.wallet.crypto.trustapp.ui;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -13,6 +14,7 @@ import com.wallet.crypto.trustapp.viewmodel.SplashViewModelFactory;
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
+import io.goshisoft.marketcap.router.MarketCapRouter;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -33,11 +35,14 @@ public class SplashActivity extends AppCompatActivity {
 
     private void onWallets(Wallet[] wallets) {
         // Start home activity
+        /*
         if (wallets.length == 0) {
             new ManageWalletsRouter().open(this, true);
         } else {
             new TransactionsRouter().open(this, true);
         }
+        */
+        new MarketCapRouter().open(this, true, true);
     }
 
 }

@@ -17,6 +17,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.wallet.crypto.trustapp.R;
+import com.wallet.crypto.trustapp.router.ManageWalletsRouter;
 import com.wallet.crypto.trustapp.viewmodel.BaseNavigationActivity;
 
 import java.util.HashMap;
@@ -48,6 +49,7 @@ public class MarketCapActivity extends BaseNavigationActivity {
         if (createBottom) {
             initBottomNavigation();
             setBottomMenu(R.menu.menu_main_network);
+            findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
         } else {
             findViewById(R.id.bottom_navigation).setVisibility(View.GONE);
         }
@@ -139,6 +141,8 @@ public class MarketCapActivity extends BaseNavigationActivity {
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        new ManageWalletsRouter().open(this, false);
+        /*
         switch (item.getItemId()) {
             case R.id.action_my_address: {
 //                viewModel.showMyAddress(this);
@@ -157,6 +161,7 @@ public class MarketCapActivity extends BaseNavigationActivity {
 //                return true;
 //            }
         }
+        */
         return false;
     }
 

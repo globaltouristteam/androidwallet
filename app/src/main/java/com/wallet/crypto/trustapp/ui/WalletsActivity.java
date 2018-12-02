@@ -106,7 +106,7 @@ public class WalletsActivity extends BaseActivity implements
 			viewModel.showTransactions(this);
 		} else {
 			finish();
-			System.exit(0);
+			//System.exit(0);
 		}
 	}
 
