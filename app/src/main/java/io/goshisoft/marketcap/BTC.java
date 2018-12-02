@@ -9,68 +9,68 @@ public class BTC implements Serializable {
 
     @SerializedName("price")
     @Expose
-    private Double price;
+    private double price;
     @SerializedName("volume_24h")
     @Expose
-    private Double volume24h;
+    private double volume24h;
     @SerializedName("market_cap")
     @Expose
-    private Double marketCap;
+    private double marketCap;
     @SerializedName("percent_change_1h")
     @Expose
-    private Double percentChange1h;
+    private double percentChange1h;
     @SerializedName("percent_change_24h")
     @Expose
-    private Double percentChange24h;
+    private double percentChange24h;
     @SerializedName("percent_change_7d")
     @Expose
-    private Double percentChange7d;
+    private double percentChange7d;
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public Double getVolume24h() {
+    public double getVolume24h() {
         return volume24h;
     }
 
-    public void setVolume24h(Double volume24h) {
+    public void setVolume24h(double volume24h) {
         this.volume24h = volume24h;
     }
 
-    public Double getMarketCap() {
+    public double getMarketCap() {
         return marketCap;
     }
 
-    public void setMarketCap(Double marketCap) {
+    public void setMarketCap(double marketCap) {
         this.marketCap = marketCap;
     }
 
-    public Double getPercentChange1h() {
+    public double getPercentChange1h() {
         return percentChange1h;
     }
 
-    public void setPercentChange1h(Double percentChange1h) {
+    public void setPercentChange1h(double percentChange1h) {
         this.percentChange1h = percentChange1h;
     }
 
-    public Double getPercentChange24h() {
+    public double getPercentChange24h() {
         return percentChange24h;
     }
 
-    public void setPercentChange24h(Double percentChange24h) {
+    public void setPercentChange24h(double percentChange24h) {
         this.percentChange24h = percentChange24h;
     }
 
-    public Double getPercentChange7d() {
+    public double getPercentChange7d() {
         return percentChange7d;
     }
 
-    public void setPercentChange7d(Double percentChange7d) {
+    public void setPercentChange7d(double percentChange7d) {
         this.percentChange7d = percentChange7d;
     }
 

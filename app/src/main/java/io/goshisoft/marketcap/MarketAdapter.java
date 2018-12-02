@@ -149,7 +149,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
             tv_id.setText(String.valueOf(object.getId()));
             tv_name.setText(object.getName());
             USD usd = object.getQuotes().getUSD();
-            DecimalFormat df = new DecimalFormat("#");
+            DecimalFormat df = new DecimalFormat("##.##");
             df.setMaximumFractionDigits(8);
             tv_price.setText(String.format("%s%s", "$", df.format(usd.getPrice())));
             tv_percent.setText(String.format("%s%%", usd.getPercentChange24h()));

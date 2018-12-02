@@ -16,12 +16,15 @@ import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.listener.OnDrawListener;
 import com.wallet.crypto.trustapp.R;
 import com.wallet.crypto.trustapp.ui.BaseActivity;
 
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -51,15 +54,34 @@ public class MarketCapDetailActivity extends BaseActivity implements OnDrawListe
         toolbar();
         enableDisplayHomeAsUp();
         progress = findViewById(R.id.progress);
+        TextView touch_chart = findViewById(R.id.touch_chart);
 
         chart = findViewById(R.id.chart);
         chart.getLegend().setEnabled(false);
         chart.setOnDrawListener(this);
         chart.setDragEnabled(false);
         chart.setScaleEnabled(false);
+        chart.setDrawBorders(false);
         chart.setViewPortOffsets(0, 0, 0, 0);
         chart.setDrawGridBackground(false);
-        chart.setTouchEnabled(false);
+        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                DecimalFormat df = new DecimalFormat("##.##");
+                df.setMaximumFractionDigits(8);
+                String fare = String.format("$%s", df.format(e.getY()));
+
+                SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy HH:mm", Locale.getDefault());
+                Date date = new Date(Long.parseLong(df.format(e.getX())));
+                String text = String.format("%s\n%s", fare, format.format(date));
+                touch_chart.setText(text);
+            }
+
+            @Override
+            public void onNothingSelected() {
+
+            }
+        });
         chart.getDescription().setEnabled(false);
         datum = (Datum) getIntent().getSerializableExtra("datum");
         showDetail(datum);
@@ -155,17 +177,12 @@ public class MarketCapDetailActivity extends BaseActivity implements OnDrawListe
                 });
     }
 
-    private void showChart(ArrayList<Float[]> priceUSD) {
+    private void showChart(ArrayList<float[]> priceUSD) {
         progress.setVisibility(View.GONE);
         ArrayList<Entry> values = new ArrayList<>();
-
-        DecimalFormat df = new DecimalFormat("#");
-        df.setMaximumFractionDigits(8);
         if (priceUSD != null && !priceUSD.isEmpty()) {
-            for (Float[] value : priceUSD) {
-                String x = df.format(value[0]);
-                String y = df.format(value[1]);
-                values.add(new Entry(Float.parseFloat(x), Float.parseFloat(y)));
+            for (float[] value : priceUSD) {
+                values.add(new Entry(value[0], value[1]));
             }
         }
         int color = ContextCompat.getColor(this, R.color.colorPrimary);
@@ -204,11 +221,11 @@ public class MarketCapDetailActivity extends BaseActivity implements OnDrawListe
         TextView tv_1d = findViewById(R.id.tv_1d);
         TextView tv_1w = findViewById(R.id.tv_1w);
 
-        DecimalFormat df = new DecimalFormat("#");
+        DecimalFormat df = new DecimalFormat("##.##");
         df.setMaximumFractionDigits(8);
 
         tv_price.setText(String.format("$%s(%s%%)", df.format(usd.getPrice()), usd.getPercentChange24h()));
-        tv_price_btc.setText(getString(R.string.bit_coin, df.format(btc.getPrice()), btc.getPercentChange24h()));
+        tv_price_btc.setText(getString(R.string.bit_coin, df.format(btc.getPrice()), df.format(btc.getPercentChange24h())));
 
         tv_price.setEnabled(usd.getPercentChange24h() > 0.0);
         tv_price_btc.setEnabled(btc.getPercentChange24h() > 0.0);
