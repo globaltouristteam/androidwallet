@@ -35,14 +35,12 @@ public class SplashActivity extends AppCompatActivity {
 
     private void onWallets(Wallet[] wallets) {
         // Start home activity
-        /*
         if (wallets.length == 0) {
-            new ManageWalletsRouter().open(this, true);
+            new MarketCapRouter().open(this, true, true);
+            //new ManageWalletsRouter().open(this, true);
         } else {
             new TransactionsRouter().open(this, true);
         }
-        */
-        new MarketCapRouter().open(this, true, true);
     }
 
 }
