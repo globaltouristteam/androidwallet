@@ -83,11 +83,11 @@ public class SettingsFragment extends PreferenceFragment
             try {
                 // get the Twitter app if possible
                 getActivity().getPackageManager().getPackageInfo("com.twitter.android", 0);
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=911011433147654144"));
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=995458902941581312"));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             } catch (Exception e) {
                 // no Twitter app, revert to browser
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/trustwalletapp"));
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/tourist_global"));
             }
             startActivity(intent);
             return false;
@@ -95,7 +95,7 @@ public class SettingsFragment extends PreferenceFragment
 
         final Preference facebook = findPreference("pref_facebook");
         facebook.setOnPreferenceClickListener(preference -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/trustwalletapp"));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/globaltouristtoken"));
             startActivity(intent);
             return false;
         });
@@ -113,10 +113,10 @@ public class SettingsFragment extends PreferenceFragment
 
             Intent mailto = new Intent(Intent.ACTION_SENDTO);
             mailto.setType("message/rfc822"); // use from live device
-            mailto.setData(Uri.parse("mailto:support@trustwalletapp.com")
+            mailto.setData(Uri.parse("mailto:goshisoft@gmail.com")
                     .buildUpon()
                     .appendQueryParameter("subject", "Android support question")
-                    .appendQueryParameter("body", "Dear Trust support,")
+                    .appendQueryParameter("body", "Dear Toto support,")
                     .build());
             startActivity(Intent.createChooser(mailto, "Select email application."));
             return true;
