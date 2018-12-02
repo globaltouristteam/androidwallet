@@ -9,7 +9,7 @@ public class Datum implements Serializable {
 
     @SerializedName("id")
     @Expose
-    private String id;
+    private Integer id;
     @SerializedName("name")
     @Expose
     private String name;
@@ -38,11 +38,11 @@ public class Datum implements Serializable {
     @Expose
     private Double lastUpdated;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
