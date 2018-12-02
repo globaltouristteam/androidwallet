@@ -29,7 +29,6 @@ import java.util.Locale;
 
 import io.goshisoft.marketcap.api.MarketApi;
 import io.goshisoft.marketcap.api.RestAdapter;
-import io.goshisoft.marketcap.entity.BTC;
 import io.goshisoft.marketcap.entity.Datum;
 import io.goshisoft.marketcap.entity.Quotes;
 import io.goshisoft.marketcap.entity.USD;
@@ -199,7 +198,7 @@ public class MarketCapDetailActivity extends BaseActivity implements OnDrawListe
         setTitle(datum.getName());
         Quotes quotes = datum.getQuotes();
         USD usd = quotes.getUSD();
-        BTC btc = quotes.getBTC();
+        USD btc = quotes.getBTC();
         TextView tv_price = findViewById(R.id.tv_price);
         TextView tv_price_btc = findViewById(R.id.tv_price_btc);
         TextView tv_market = findViewById(R.id.tv_market);

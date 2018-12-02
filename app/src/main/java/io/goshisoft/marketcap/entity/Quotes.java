@@ -6,9 +6,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-import io.goshisoft.marketcap.entity.BTC;
-import io.goshisoft.marketcap.entity.USD;
-
 public class Quotes  implements Serializable {
 
     @SerializedName("USD")
@@ -16,7 +13,7 @@ public class Quotes  implements Serializable {
     private USD uSD;
     @SerializedName("BTC")
     @Expose
-    private BTC bTC;
+    private USD bTC;
 
     public USD getUSD() {
         return uSD;
@@ -26,11 +23,11 @@ public class Quotes  implements Serializable {
         this.uSD = uSD;
     }
 
-    public BTC getBTC() {
+    public USD getBTC() {
         return bTC;
     }
 
-    public void setBTC(BTC bTC) {
+    public void setBTC(USD bTC) {
         this.bTC = bTC;
     }
 
