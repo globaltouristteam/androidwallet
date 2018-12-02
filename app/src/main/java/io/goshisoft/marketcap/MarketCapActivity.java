@@ -10,6 +10,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +27,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class MarketCapActivity extends BaseNavigationActivity {
+public class MarketCapActivity extends BaseNavigationActivity implements SearchView.OnQueryTextListener {
 
     private int start = 0;
     private Disposable disposable;
@@ -43,12 +44,14 @@ public class MarketCapActivity extends BaseNavigationActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market_cap);
+        toolbar();
         Intent intent = getIntent();
         boolean createBottom = intent.getBooleanExtra("type", false);
         if (createBottom) {
             initBottomNavigation();
             setBottomMenu(R.menu.menu_main_network);
         } else {
+            enableDisplayHomeAsUp();
             findViewById(R.id.bottom_navigation).setVisibility(View.GONE);
         }
         adapter = new MarketAdapter();
@@ -134,6 +137,10 @@ public class MarketCapActivity extends BaseNavigationActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+        MenuItem myActionMenuItem = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) myActionMenuItem.getActionView();
+        searchView.setOnQueryTextListener(this);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -204,5 +211,16 @@ public class MarketCapActivity extends BaseNavigationActivity {
                 }, throwable -> {
 
                 });
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        adapter.filter(newText);
+        return true;
     }
 }

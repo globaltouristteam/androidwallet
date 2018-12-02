@@ -72,7 +72,9 @@
             android:name=".ui.GasSettingsActivity"
             android:label="@string/title_send_settings" />
 
-        <activity android:name="io.goshisoft.marketcap.MarketCapActivity" />
+        <activity
+            android:name="io.goshisoft.marketcap.MarketCapActivity"
+            android:label="@string/market_cap" />
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package io.goshisoft.marketcap;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,21 +17,24 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder> {
 
-    private final ArrayList<Datum> mDatum = new ArrayList<>();
+    private final ArrayList<Datum> originObject = new ArrayList<>();
+    private final ArrayList<Datum> filter = new ArrayList<>();
     private int sortType = 0;
     private boolean ASC = true;
 
     public void addAll(List<Datum> data) {
-        mDatum.addAll(data);
+        originObject.addAll(data);
+        filter.addAll(data);
         sort();
         notifyDataSetChanged();
     }
 
     private void sort() {
-        Collections.sort(mDatum, (datum, t1) -> {
+        Collections.sort(originObject, (datum, t1) -> {
             switch (sortType) {
                 case 1:
                     return ASC ? datum.getRank().compareTo(t1.getRank()) : t1.getRank().compareTo(datum.getRank());
@@ -75,7 +79,8 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
     }
 
     public void clean() {
-        mDatum.clear();
+        originObject.clear();
+        filter.clear();
     }
 
     @NonNull
@@ -87,12 +92,30 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(mDatum.get(position));
+        holder.bind(originObject.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mDatum.size();
+        return originObject.size();
+    }
+
+    public void filter(String newText) {
+        if (TextUtils.isEmpty(newText)) {
+            originObject.clear();
+            originObject.addAll(filter);
+            notifyDataSetChanged();
+        } else {
+            originObject.clear();
+            for (Datum datum : filter) {
+                String name = datum.getName().toLowerCase(Locale.US);
+                String search = newText.toLowerCase(Locale.US);
+                if (name.contains(search) || datum.getId().contains(newText)) {
+                    originObject.add(datum);
+                }
+            }
+            notifyDataSetChanged();
+        }
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
