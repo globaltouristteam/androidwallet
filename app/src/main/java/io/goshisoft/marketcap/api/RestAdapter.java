@@ -1,6 +1,5 @@
-package io.goshisoft.marketcap;
+package io.goshisoft.marketcap.api;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.google.gson.GsonBuilder;

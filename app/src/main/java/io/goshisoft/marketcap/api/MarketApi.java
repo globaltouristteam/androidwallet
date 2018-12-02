@@ -1,7 +1,9 @@
-package io.goshisoft.marketcap;
+package io.goshisoft.marketcap.api;
 
 import java.util.Map;
 
+import io.goshisoft.marketcap.entity.MarketDetailResponse;
+import io.goshisoft.marketcap.entity.MarketResponse;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;

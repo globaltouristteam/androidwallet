@@ -1,4 +1,4 @@
-package io.goshisoft.marketcap;
+package io.goshisoft.marketcap.entity;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -9,6 +9,7 @@ public class MarketDetailResponse {
 
     @SerializedName("price_usd")
     @Expose
-    ArrayList<float[]> priceUSD;
+    public
+    ArrayList<Float[]> priceUSD;
 
 }

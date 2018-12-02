@@ -1,5 +1,5 @@
 
-package io.goshisoft.marketcap;
+package io.goshisoft.marketcap.entity;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

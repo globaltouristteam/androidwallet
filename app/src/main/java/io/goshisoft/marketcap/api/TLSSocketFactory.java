@@ -1,4 +1,4 @@
-package io.goshisoft.marketcap;
+package io.goshisoft.marketcap.api;
 
 import java.io.IOException;
 import java.io.InputStream;

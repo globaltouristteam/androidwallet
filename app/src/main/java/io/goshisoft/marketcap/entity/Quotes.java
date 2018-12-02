@@ -1,5 +1,5 @@
 
-package io.goshisoft.marketcap;
+package io.goshisoft.marketcap.entity;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -13,7 +13,7 @@ public class Quotes  implements Serializable {
     private USD uSD;
     @SerializedName("BTC")
     @Expose
-    private BTC bTC;
+    private USD bTC;
 
     public USD getUSD() {
         return uSD;
@@ -23,11 +23,11 @@ public class Quotes  implements Serializable {
         this.uSD = uSD;
     }
 
-    public BTC getBTC() {
+    public USD getBTC() {
         return bTC;
     }
 
-    public void setBTC(BTC bTC) {
+    public void setBTC(USD bTC) {
         this.bTC = bTC;
     }
 

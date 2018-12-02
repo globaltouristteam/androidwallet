@@ -19,6 +19,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+import io.goshisoft.marketcap.entity.Datum;
+import io.goshisoft.marketcap.entity.USD;
+
 public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder> {
 
     private final ArrayList<Datum> originObject = new ArrayList<>();
@@ -114,8 +117,9 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
             originObject.clear();
             for (Datum datum : filter) {
                 String name = datum.getName().toLowerCase(Locale.US);
+                String symbol = datum.getSymbol().toLowerCase(Locale.US);
                 String search = newText.toLowerCase(Locale.US);
-                if (name.contains(search) || datum.getId().contains(newText)) {
+                if (name.contains(search) || symbol.contains(search)) {
                     originObject.add(datum);
                 }
             }

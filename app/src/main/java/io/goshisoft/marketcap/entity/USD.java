@@ -1,11 +1,11 @@
-package io.goshisoft.marketcap;
+package io.goshisoft.marketcap.entity;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class BTC implements Serializable {
+public class USD implements Serializable {
 
     @SerializedName("price")
     @Expose

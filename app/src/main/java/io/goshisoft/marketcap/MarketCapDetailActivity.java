@@ -30,6 +30,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import io.goshisoft.marketcap.api.MarketApi;
+import io.goshisoft.marketcap.api.RestAdapter;
+import io.goshisoft.marketcap.entity.Datum;
+import io.goshisoft.marketcap.entity.Quotes;
+import io.goshisoft.marketcap.entity.USD;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -83,6 +88,9 @@ public class MarketCapDetailActivity extends BaseActivity implements OnDrawListe
             }
         });
         chart.getDescription().setEnabled(false);
+        chart.getAxisLeft().setDrawGridLines(false);
+        chart.getXAxis().setDrawGridLines(false);
+        chart.getAxisRight().setDrawGridLines(false);
         datum = (Datum) getIntent().getSerializableExtra("datum");
         showDetail(datum);
         loadByDate(Type.TODAY);
@@ -210,7 +218,7 @@ public class MarketCapDetailActivity extends BaseActivity implements OnDrawListe
         setTitle(datum.getName());
         Quotes quotes = datum.getQuotes();
         USD usd = quotes.getUSD();
-        BTC btc = quotes.getBTC();
+        USD btc = quotes.getBTC();
         TextView tv_price = findViewById(R.id.tv_price);
         TextView tv_price_btc = findViewById(R.id.tv_price_btc);
         TextView tv_market = findViewById(R.id.tv_market);
