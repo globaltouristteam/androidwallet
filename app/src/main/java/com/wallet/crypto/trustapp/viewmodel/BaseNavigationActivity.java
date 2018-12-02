@@ -1,5 +1,6 @@
 package com.wallet.crypto.trustapp.viewmodel;
 
+import android.support.annotation.IdRes;
 import android.support.annotation.MenuRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -20,6 +21,10 @@ public abstract class BaseNavigationActivity extends BaseActivity implements Bot
     protected void setBottomMenu(@MenuRes int menuRes) {
         navigation.getMenu().clear();
         navigation.inflateMenu(menuRes);
+    }
+
+    protected void setBottomSelectedItem(@IdRes int menuItem) {
+        navigation.setSelectedItemId(menuItem);
     }
 
     @Override

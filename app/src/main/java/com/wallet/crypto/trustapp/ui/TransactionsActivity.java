@@ -41,6 +41,7 @@ import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
 import io.goshisoft.marketcap.MarketCapActivity;
+import io.goshisoft.marketcap.router.MarketCapRouter;
 
 import static com.wallet.crypto.trustapp.C.ETHEREUM_NETWORK_NAME;
 
@@ -170,7 +171,10 @@ public class TransactionsActivity extends BaseNavigationActivity implements View
                 return true;
             }
             case R.id.action_log: {
-                startActivity(MarketCapActivity.getIntent(this, false));
+                new MarketCapRouter().open(this, false, false);
+                return true;
+            }
+            case R.id.action_transaction: {
                 return true;
             }
         }
@@ -210,6 +214,7 @@ public class TransactionsActivity extends BaseNavigationActivity implements View
     private void onDefaultNetwork(NetworkInfo networkInfo) {
         adapter.setDefaultNetwork(networkInfo);
         setBottomMenu(R.menu.menu_main_network);
+        setBottomSelectedItem(R.id.action_transaction);
     }
 
     private void onError(ErrorEnvelope errorEnvelope) {

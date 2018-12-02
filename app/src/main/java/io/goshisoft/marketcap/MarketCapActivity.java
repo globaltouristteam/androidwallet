@@ -51,6 +51,7 @@ public class MarketCapActivity extends BaseNavigationActivity implements SearchV
         if (createBottom) {
             initBottomNavigation();
             setBottomMenu(R.menu.menu_main_network);
+            setBottomSelectedItem(R.id.action_log);
             findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
         } else {
             enableDisplayHomeAsUp();
@@ -148,27 +149,18 @@ public class MarketCapActivity extends BaseNavigationActivity implements SearchV
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        new ManageWalletsRouter().open(this, false);
-        /*
         switch (item.getItemId()) {
-            case R.id.action_my_address: {
-//                viewModel.showMyAddress(this);
+            case R.id.action_log: {
                 return true;
             }
-            case R.id.action_my_tokens: {
-//                viewModel.showTokens(this);
-                return true;
+            case R.id.action_send:
+            case R.id.action_my_address:
+            case R.id.action_my_tokens:
+            case R.id.action_transaction: {
+                new ManageWalletsRouter().open(this, false);
+                return false;
             }
-            case R.id.action_send: {
-//                viewModel.showSend(this);
-                return true;
-            }
-//            case R.id.action_log: {
-//                startActivity(MarketCapActivity.getIntent(this, false));
-//                return true;
-//            }
         }
-        */
         return false;
     }
 

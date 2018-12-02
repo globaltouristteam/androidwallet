@@ -6,7 +6,11 @@
         android:checked="false"
         android:icon="@mipmap/currency"
         android:title="@string/market_cap" />
-
+    <item
+        android:id="@+id/action_transaction"
+        android:checked="false"
+        android:icon="@drawable/token_icon"
+        android:title="@string/transactions" />
     <item
         android:id="@+id/action_send"
         android:checked="false"
