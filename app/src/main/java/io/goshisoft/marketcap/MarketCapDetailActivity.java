@@ -27,6 +27,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import io.goshisoft.marketcap.api.MarketApi;
+import io.goshisoft.marketcap.api.RestAdapter;
+import io.goshisoft.marketcap.entity.BTC;
+import io.goshisoft.marketcap.entity.Datum;
+import io.goshisoft.marketcap.entity.Quotes;
+import io.goshisoft.marketcap.entity.USD;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;

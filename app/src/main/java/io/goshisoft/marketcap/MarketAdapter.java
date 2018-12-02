@@ -19,6 +19,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+import io.goshisoft.marketcap.entity.Datum;
+import io.goshisoft.marketcap.entity.USD;
+
 public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder> {
 
     private final ArrayList<Datum> originObject = new ArrayList<>();

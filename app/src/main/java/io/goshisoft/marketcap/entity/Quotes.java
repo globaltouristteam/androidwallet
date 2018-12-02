@@ -1,10 +1,13 @@
 
-package io.goshisoft.marketcap;
+package io.goshisoft.marketcap.entity;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+
+import io.goshisoft.marketcap.entity.BTC;
+import io.goshisoft.marketcap.entity.USD;
 
 public class Quotes  implements Serializable {
 

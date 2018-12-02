@@ -1,9 +1,12 @@
 
-package io.goshisoft.marketcap;
+package io.goshisoft.marketcap.entity;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import io.goshisoft.marketcap.entity.Datum;
+import io.goshisoft.marketcap.entity.Metadata;
 
 public class MarketResponse {
 
