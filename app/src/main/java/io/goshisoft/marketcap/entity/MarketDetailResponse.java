@@ -9,6 +9,7 @@ public class MarketDetailResponse {
 
     @SerializedName("price_usd")
     @Expose
+    public
     ArrayList<Float[]> priceUSD;
 
 }
