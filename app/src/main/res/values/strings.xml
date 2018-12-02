@@ -251,5 +251,5 @@
     <string name="change_1h">% Changed 1h</string>
     <string name="change_1d">% Changed 1d</string>
     <string name="change_1w">% Changed 1w</string>
-    <string name="bit_coin" formatted="false">₿%s (%s%%)</string>
+    <string name="bit_coin" formatted="false">₿%s (%.2f%%)</string>
 </resources>

@@ -66,6 +66,9 @@ public class MarketCapDetailActivity extends BaseActivity implements OnDrawListe
         chart.setDrawGridBackground(false);
         chart.setTouchEnabled(false);
         chart.getDescription().setEnabled(false);
+        chart.getAxisLeft().setDrawGridLines(false);
+        chart.getXAxis().setDrawGridLines(false);
+        chart.getAxisRight().setDrawGridLines(false);
         datum = (Datum) getIntent().getSerializableExtra("datum");
         showDetail(datum);
         loadByDate(Type.TODAY);
