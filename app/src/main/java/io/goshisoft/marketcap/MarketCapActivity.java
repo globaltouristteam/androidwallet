@@ -57,7 +57,7 @@ public class MarketCapActivity extends BaseNavigationActivity implements SearchV
             enableDisplayHomeAsUp();
             findViewById(R.id.bottom_navigation).setVisibility(View.GONE);
         }
-        adapter = new MarketAdapter();
+        adapter = new MarketAdapter(datum -> startActivity(MarketCapDetailActivity.getIntent(this, datum)));
         RecyclerView recyclerView = findViewById(R.id.list);
         CustomRadioGroup rbId = findViewById(R.id.rbId);
         CustomRadioGroup rbName = findViewById(R.id.rbName);

@@ -75,6 +75,7 @@
         <activity
             android:name="io.goshisoft.marketcap.MarketCapActivity"
             android:label="@string/market_cap" />
+        <activity android:name="io.goshisoft.marketcap.MarketCapDetailActivity" />
     </application>
 
 </manifest>

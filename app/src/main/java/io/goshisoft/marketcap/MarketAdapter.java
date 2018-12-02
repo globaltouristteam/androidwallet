@@ -23,8 +23,13 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
 
     private final ArrayList<Datum> originObject = new ArrayList<>();
     private final ArrayList<Datum> filter = new ArrayList<>();
+    private final Listener listener;
     private int sortType = 0;
     private boolean ASC = true;
+
+    MarketAdapter(Listener listener) {
+        this.listener = listener;
+    }
 
     public void addAll(List<Datum> data) {
         originObject.addAll(data);
@@ -118,6 +123,10 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
         }
     }
 
+    interface Listener {
+        void onItemClick(Datum datum);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tv_id;
         private TextView tv_name;
@@ -149,6 +158,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
             tv_percent.setEnabled(enable);
             String url = "https://s2.coinmarketcap.com/static/img/coins/32x32/" + object.getId() + ".png";
             glide.load(url).into(imv_coin);
+            itemView.setOnClickListener(view -> listener.onItemClick(object));
         }
     }
 }

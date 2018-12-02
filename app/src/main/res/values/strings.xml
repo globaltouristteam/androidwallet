@@ -86,7 +86,7 @@
     </string>
     <string name="message_no_backup">No backup, no Ethereum.</string>
     <string name="error_deleting_account">Error deleting wallet</string>
-	<string name="error_deleting_account_with_details">Error deleting wallet %s</string>
+    <string name="error_deleting_account_with_details">Error deleting wallet %s</string>
     <string name="error_passwords_must_match">Passwords must match.</string>
     <string name="label_confirm_new_password">Confirm new password</string>
     <string name="label_new_password">New password</string>
@@ -120,15 +120,15 @@
     <string name="transfer">Transfer %s</string>
     <string name="action_buy">Buy</string>
     <string name="title_deposit">How would you like to buy?</string>
-	<string name="empty"/>
-	<string name="try_again">Try again</string>
-	<string name="already_have_account">Already have a wallet?</string>
-	<string name="title_add_account">Add wallet</string>
-	<string name="action_create_new_account">Create new wallet</string>
-	<string name="unknown_error">An error has occurred.</string>
-	<string name="action_backup_wallet">Backup Wallet</string>
-	<string name="action_backup_later">Do it later</string>
-	<string name="set_account_default">Do want to make a new wallet the main one?</string>
+    <string name="empty" />
+    <string name="try_again">Try again</string>
+    <string name="already_have_account">Already have a wallet?</string>
+    <string name="title_add_account">Add wallet</string>
+    <string name="action_create_new_account">Create new wallet</string>
+    <string name="unknown_error">An error has occurred.</string>
+    <string name="action_backup_wallet">Backup Wallet</string>
+    <string name="action_backup_later">Do it later</string>
+    <string name="set_account_default">Do want to make a new wallet the main one?</string>
     <string name="no_tokens">No tokens found.</string>
     <string name="title_email">Email us</string>
     <!-- Titles -->
@@ -237,4 +237,19 @@
     <string name="hour">24h</string>
     <string name="search">Search</string>
     <string name="transactions">Transactions</string>
+    <string name="today">Today</string>
+    <string name="_1w">1W</string>
+    <string name="_1m">1M</string>
+    <string name="_3m">3M</string>
+    <string name="_6m">6M</string>
+    <string name="_1y">1Y</string>
+    <string name="all">All</string>
+    <string name="price_btc">Price BTC</string>
+    <string name="volume_24h">Volume 24h</string>
+    <string name="available_supply">Available supply</string>
+    <string name="total_supply">Total supply</string>
+    <string name="change_1h">% Changed 1h</string>
+    <string name="change_1d">% Changed 1d</string>
+    <string name="change_1w">% Changed 1w</string>
+    <string name="bit_coin" formatted="false">₿%s (%s%%)</string>
 </resources>

@@ -4,7 +4,9 @@ package io.goshisoft.marketcap;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Quotes {
+import java.io.Serializable;
+
+public class Quotes  implements Serializable {
 
     @SerializedName("USD")
     @Expose
