@@ -29,14 +29,16 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
     private final Listener listener;
     private int sortType = 0;
     private boolean ASC = true;
+    private String newText;
 
     MarketAdapter(Listener listener) {
         this.listener = listener;
     }
 
-    public void addAll(List<Datum> data) {
+    void addAll(List<Datum> data) {
         originObject.addAll(data);
         filter.addAll(data);
+        filter(newText);
         sort();
         notifyDataSetChanged();
     }
@@ -45,7 +47,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
         Collections.sort(originObject, (datum, t1) -> {
             switch (sortType) {
                 case 1:
-                    return ASC ? datum.getRank().compareTo(t1.getRank()) : t1.getRank().compareTo(datum.getRank());
+                    return ASC ? datum.getName().compareTo(t1.getName()) : t1.getName().compareTo(datum.getName());
                 case 2: {
                     USD usd = datum.getQuotes().getUSD();
                     USD usd1 = t1.getQuotes().getUSD();
@@ -65,28 +67,28 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
         });
     }
 
-    public int getSortType() {
+    int getSortType() {
         return sortType;
     }
 
-    public void setSortType(int sortType) {
+    void setSortType(int sortType) {
         this.sortType = sortType;
         sort();
         notifyDataSetChanged();
     }
 
-    public boolean setASC() {
+    boolean setASC() {
         this.ASC = !this.ASC;
         sort();
         notifyDataSetChanged();
         return this.ASC;
     }
 
-    public void setASC(boolean ASC) {
+    void setASC(boolean ASC) {
         this.ASC = ASC;
     }
 
-    public void clean() {
+    void clean() {
         originObject.clear();
         filter.clear();
     }
@@ -108,7 +110,8 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
         return originObject.size();
     }
 
-    public void filter(String newText) {
+    void filter(String newText) {
+        this.newText = newText;
         if (TextUtils.isEmpty(newText)) {
             originObject.clear();
             originObject.addAll(filter);
@@ -117,7 +120,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
             originObject.clear();
             for (Datum datum : filter) {
                 String name = datum.getName().toLowerCase(Locale.US);
-                String symbol = datum.getSymbol().toLowerCase(Locale.US);
+                String symbol = datum.getId().toString().toLowerCase(Locale.US);
                 String search = newText.toLowerCase(Locale.US);
                 if (name.contains(search) || symbol.contains(search)) {
                     originObject.add(datum);
