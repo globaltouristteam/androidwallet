@@ -118,10 +118,10 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
             notifyDataSetChanged();
         } else {
             originObject.clear();
+            String search = newText.toLowerCase(Locale.US);
             for (Datum datum : filter) {
                 String name = datum.getName().toLowerCase(Locale.US);
-                String symbol = datum.getId().toString().toLowerCase(Locale.US);
-                String search = newText.toLowerCase(Locale.US);
+                String symbol = datum.getSymbol().toLowerCase(Locale.US);
                 if (name.contains(search) || symbol.contains(search)) {
                     originObject.add(datum);
                 }
