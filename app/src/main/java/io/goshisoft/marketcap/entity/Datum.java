@@ -21,7 +21,7 @@ public class Datum implements Serializable {
     private String websiteSlug;
     @SerializedName("rank")
     @Expose
-    private Double rank;
+    private Integer rank;
     @SerializedName("circulating_supply")
     @Expose
     private Double circulatingSupply;
@@ -70,11 +70,11 @@ public class Datum implements Serializable {
         this.websiteSlug = websiteSlug;
     }
 
-    public Double getRank() {
+    public Integer getRank() {
         return rank;
     }
 
-    public void setRank(Double rank) {
+    public void setRank(Integer rank) {
         this.rank = rank;
     }
 

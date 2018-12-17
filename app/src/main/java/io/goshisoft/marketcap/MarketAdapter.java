@@ -47,7 +47,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
         Collections.sort(originObject, (datum, t1) -> {
             switch (sortType) {
                 case 1:
-                    return ASC ? datum.getName().compareTo(t1.getName()) : t1.getName().compareTo(datum.getName());
+                    return ASC ? datum.getName().compareToIgnoreCase(t1.getName()) : t1.getName().compareToIgnoreCase(datum.getName());
                 case 2: {
                     USD usd = datum.getQuotes().getUSD();
                     USD usd1 = t1.getQuotes().getUSD();
@@ -61,8 +61,8 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
                             : Double.compare(usd1.getPrice(), usd.getPrice());
                 }
                 default:
-                    return ASC ? datum.getId().compareTo(t1.getId()) :
-                            t1.getId().compareTo(datum.getId());
+                    return ASC ? datum.getRank().compareTo(t1.getRank()) :
+                            t1.getRank().compareTo(datum.getRank());
             }
         });
     }
@@ -153,7 +153,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
         }
 
         void bind(Datum object) {
-            tv_id.setText(String.valueOf(object.getId()));
+            tv_id.setText(String.valueOf(object.getRank()));
             tv_name.setText(object.getName());
             USD usd = object.getQuotes().getUSD();
             DecimalFormat df = new DecimalFormat("##.##");

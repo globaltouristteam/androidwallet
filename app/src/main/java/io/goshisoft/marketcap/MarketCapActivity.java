@@ -178,6 +178,8 @@ public class MarketCapActivity extends BaseNavigationActivity implements SearchV
     private void getListCoin(int start) {
         HashMap<String, Object> queries = new HashMap<>();
         queries.put("limit", 100);
+        queries.put("sort", "rank");
+        /*
         switch (adapter.getSortType()) {
             case 1:
                 queries.put("sort", "rank");
@@ -191,7 +193,7 @@ public class MarketCapActivity extends BaseNavigationActivity implements SearchV
             default:
                 queries.put("sort", "id");
                 break;
-        }
+        }*/
         queries.put("convert", "BTC");
         queries.put("start", start);
         queries.put("structure", "array");
