@@ -101,12 +101,14 @@ public class SettingsFragment extends PreferenceFragment
         });
 
         final Preference donate = findPreference("pref_donate");
-        donate.setOnPreferenceClickListener(preference -> {
-            Intent intent = new Intent(getActivity(), SendActivity.class);
-            intent.putExtra(C.EXTRA_ADDRESS, C.DONATION_ADDRESS);
-            startActivity(intent);
-            return true;
-        });
+        if (donate != null) {
+            donate.setOnPreferenceClickListener(preference -> {
+                Intent intent = new Intent(getActivity(), SendActivity.class);
+                intent.putExtra(C.EXTRA_ADDRESS, C.DONATION_ADDRESS);
+                startActivity(intent);
+                return true;
+            });
+        }
 
         final Preference email = findPreference("pref_email");
         email.setOnPreferenceClickListener(preference -> {

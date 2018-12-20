@@ -78,11 +78,10 @@
                 android:icon="@mipmap/settings_email"
                 android:title="@string/title_email" />
 
-            <Preference
-                android:key="pref_donate"
-                android:icon="@mipmap/settings_donate"
-                android:title="@string/title_donate">
-            </Preference>
+            <!--<Preference-->
+                <!--android:key="pref_donate"-->
+                <!--android:icon="@mipmap/settings_donate"-->
+                <!--android:title="@string/title_donate"/>-->
 
             <Preference
                 android:title="@string/title_privacy_policy"
